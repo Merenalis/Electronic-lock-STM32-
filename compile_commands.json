@@ -1,0 +1,14 @@
+[
+    {
+        "command": "C:\\Users\\Rostyslav\\.platformio\\packages\\toolchain-gccarmnoneeabi\\bin\\arm-none-eabi-gcc.exe -mthumb -mcpu=cortex-m3 -x assembler-with-cpp -DPLATFORMIO=60200 -DSTM32F103xB -DSTM32F1 -DF_CPU=72000000L -IC:\\Users\\Rostyslav\\.platformio\\packages\\framework-cmsis\\CMSIS\\Include -IC:\\Users\\Rostyslav\\.platformio\\packages\\framework-cmsis-stm32f1\\Include -c -o .pio\\build\\genericSTM32F103C8\\FrameworkCMSIS\\gcc\\startup_stm32f103xb.o C:\\Users\\Rostyslav\\.platformio\\packages\\framework-cmsis-stm32f1\\Source\\Templates\\gcc\\startup_stm32f103xb.S",
+        "directory": "C:\\Users\\Rostyslav\\Documents\\PlatformIO\\Projects\\Electronic smart lock",
+        "file": "C:\\Users\\Rostyslav\\.platformio\\packages\\framework-cmsis-stm32f1\\Source\\Templates\\gcc\\startup_stm32f103xb.S",
+        "output": ".pio\\build\\genericSTM32F103C8\\FrameworkCMSIS\\gcc\\startup_stm32f103xb.o"
+    },
+    {
+        "command": "C:\\Users\\Rostyslav\\.platformio\\packages\\toolchain-gccarmnoneeabi\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\genericSTM32F103C8\\FrameworkCMSIS\\system_stm32f1xx.o -c -Os -ffunction-sections -fdata-sections -Wall -mthumb -mcpu=cortex-m3 -DPLATFORMIO=60200 -DSTM32F103xB -DSTM32F1 -DF_CPU=72000000L -IC:\\Users\\Rostyslav\\.platformio\\packages\\framework-cmsis\\CMSIS\\Include -IC:\\Users\\Rostyslav\\.platformio\\packages\\framework-cmsis-stm32f1\\Include C:\\Users\\Rostyslav\\.platformio\\packages\\framework-cmsis-stm32f1\\Source\\Templates\\system_stm32f1xx.c",
+        "directory": "C:\\Users\\Rostyslav\\Documents\\PlatformIO\\Projects\\Electronic smart lock",
+        "file": "C:\\Users\\Rostyslav\\.platformio\\packages\\framework-cmsis-stm32f1\\Source\\Templates\\system_stm32f1xx.c",
+        "output": ".pio\\build\\genericSTM32F103C8\\FrameworkCMSIS\\system_stm32f1xx.o"
+    }
+]

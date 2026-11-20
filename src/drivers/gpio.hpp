@@ -44,6 +44,7 @@ public:
   void write(GPIO_Port port, uint8_t pin, bool state);
   void set(GPIO_Port port, uint8_t pin);
   void reset(GPIO_Port port, uint8_t pin);
+  void toggle(GPIO_Port port, uint8_t pin);
 
 private:
   void enable_clock(GPIO_Port port);

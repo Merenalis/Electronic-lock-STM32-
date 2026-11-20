@@ -131,3 +131,15 @@ GPIO::GPIO_State GPIO::read(GPIO_Port port, uint8_t pin) {
 
   return ((gpio->IDR & (1U << pin)) != 0U) ? GPIO_State::High : GPIO_State::Low;
 }
+
+void GPIO::toggle(GPIO_Port port, uint8_t pin) {
+  if (pin > 15) {
+    return;
+  }
+  GPIO_TypeDef *gpio = get_port(port);
+  if (gpio == nullptr) {
+    return;
+  }
+
+  gpio->ODR ^= (1U << pin);
+}

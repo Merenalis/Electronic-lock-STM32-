@@ -15,7 +15,7 @@ void System::system_init() {
 
   RCC->CFGR &= ~(7U << 11); // APB2 72mhz
 
-  RCC->CFGR |= (6U << 16); // HSE select
+  RCC->CFGR |= (1U << 16); // HSE select
 
   RCC->CFGR &= ~(15U << 18);
   RCC->CFGR |= (7U << 18); // PLL multiplicator x9

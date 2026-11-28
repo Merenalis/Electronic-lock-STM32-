@@ -45,11 +45,11 @@ public:
   void set(GPIO_Port port, uint8_t pin);
   void reset(GPIO_Port port, uint8_t pin);
   void toggle(GPIO_Port port, uint8_t pin);
+  GPIO_State read(GPIO_Port port, uint8_t pin);
 
 private:
   void enable_clock(GPIO_Port port);
   GPIO_TypeDef *get_port(GPIO_Port port);
   uint8_t speed_to_mode_bits(GPIO_Speed speed);
   void write(GPIO_Port port, uint8_t pin, GPIO_State state);
-  GPIO_State read(GPIO_Port port, uint8_t pin);
 };

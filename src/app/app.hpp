@@ -28,6 +28,6 @@ private:
   uint32_t unlock_duration = 5000;
   uint32_t denied_duration = 5000;
   char pin_buffer[5];
-  uint8_t pin_length;
+  uint8_t pin_length = 0;
   const uint8_t pin_length_max = 4;
 };

@@ -8,6 +8,10 @@ void GPIO::init(GPIO_Port port, uint8_t pin, GPIO_Mode mode, GPIO_Config config,
   enable_clock(port);
 
   GPIO_TypeDef *gpio = get_port(port);
+
+  if (gpio == nullptr)
+    return;
+
   uint8_t shift = (pin % 8) * 4;
 
   uint8_t mode_bits = 0U;
@@ -20,8 +24,12 @@ void GPIO::init(GPIO_Port port, uint8_t pin, GPIO_Mode mode, GPIO_Config config,
     break;
   case GPIO_Mode::Input:
     mode_bits = 0b00U;
-    if (config == GPIO_Config::Pull_Up || config == GPIO_Config::Pull_Down) {
+    if (config == GPIO_Config::Pull_Up) {
       cnf_bits = 0b10U;
+      gpio->ODR |= (1U << pin);
+    } else if (config == GPIO_Config::Pull_Down) {
+      cnf_bits = 0b10U;
+      gpio->ODR &= ~(1U << pin);
     } else {
       cnf_bits = 0b01U;
     }

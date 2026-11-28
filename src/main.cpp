@@ -1,4 +1,5 @@
 #include "app/app.hpp"
+#include "drivers/door_sensor.hpp"
 #include "drivers/gpio.hpp"
 #include "drivers/i2c.hpp"
 #include "drivers/lcd.hpp"
@@ -22,23 +23,21 @@ int main() {
   timer.enable_interrupt();
   timer.start();
 
-  Servo servo;
-  servo.init();
+  GPIO gpio;
+  DoorSensor doorSensor(timer, gpio, GPIO::GPIO_Port::GPIO_A, 0);
 
-  I2C i2c;
-  i2c.init();
+  gpio.init(GPIO::GPIO_Port::GPIO_C, 13, GPIO::GPIO_Mode::Output,
+            GPIO::GPIO_Config::PushPull, GPIO::GPIO_Speed::MHz_2);
+  gpio.set(GPIO::GPIO_Port::GPIO_C, 13); // світлодіод вимкнений
+  doorSensor.init();
 
-  LCD lcd(i2c, timer);
-  lcd.init();
-  App app(timer, servo, lcd);
-  app.init();
-  app.handle_key('1');
-  app.handle_key('2');
-  app.handle_key('3');
-  app.handle_key('4');
-  app.handle_key('5');
+  while (true) {
+    doorSensor.update();
 
-  while (1) {
-    app.update();
+    if (doorSensor.get_state() == DoorState::CLOSED) {
+      gpio.reset(GPIO::GPIO_Port::GPIO_C, 13); // Low -> світиться
+    } else {
+      gpio.set(GPIO::GPIO_Port::GPIO_C, 13); // High -> погашений
+    }
   }
 }
